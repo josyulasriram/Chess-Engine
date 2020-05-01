@@ -16,6 +16,8 @@ generateBoard::generateBoard(string b[][]){
   bR=0;
   wN=0;
   bN=0;
+
+  function
 }
 void generateBoard::generateBitboard(){
 
