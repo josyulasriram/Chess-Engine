@@ -10,11 +10,11 @@ using namespace std;
 // wB=WhiteBishop bB=BlackBishop wR=WhiteRook bR=BlackRook wN=WhiteKnight bN=BlackKnight
 //white will always be on bottom, black on top of board
 
-class generateBoard
+class Board
 {
 public:
   string board[8][8];
-  generateBoard();
+  Board();
   void generateBitboard();
   unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN;
 

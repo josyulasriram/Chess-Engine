@@ -2,7 +2,7 @@
 #include "generateBoard.h"
 using namespace std;
 
-generateBoard::generateBoard(){
+Board::Board(){
   board =
       {{"bR","bN","bB","bQ","bK","bB","bN","bR"},
       {"bP","bP","bP","bP","bP","bP","bP","bP"},
@@ -25,7 +25,7 @@ generateBoard::generateBoard(){
   wN=0;
   bN=0;
 }
-void generateBoard::generateBitboard(){
+void Board::generateBitboard(){
   for(int i = 0; i < 64; i++){
     string bitBoard = "0000000000000000000000000000000000000000000000000000000000000000";
     bitBoard = bitBoard.substr(i+1) + "1" + bitBoard.substr(0,i);
