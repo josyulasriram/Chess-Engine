@@ -13,9 +13,18 @@ using namespace std;
 class Board
 {
 public:
-  string board[8][8];
+  string board[8][8] =
+        {{"bR","bN","bB","bQ","bK","bB","bN","bR"},
+        {"bP","bP","bP","bP","bP","bP","bP","bP"},
+        {".",".",".",".",".",".",".","."},
+        {".",".",".",".",".",".",".","."},
+        {".",".",".",".",".",".",".","."},
+        {".",".",".",".",".",".",".","."},
+        {"wP","wP","wP","wP","wP","wP","wP","wP"},
+        {"wR","wN","wB","wQ","wK","wB","wN","wR"}};
   Board();
   void generateBitboard();
+  void printBoard();
   unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN;
 
 };
