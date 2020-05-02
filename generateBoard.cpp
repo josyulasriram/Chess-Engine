@@ -38,15 +38,34 @@ void Board::generateBitboard(){
         break;
       case "bB":
         bB = bB + stoll(bitBoard, nullptr, 2);
+        break;
       case "bQ":
         bQ = bQ + stoll(bitBoard, nullptr, 2);
+        break;
       case "bK":
         bK = bK + stoll(bitBoard, nullptr, 2);
+        break;
       case "bP":
         bP = bP + stoll(bitBoard, nullptr, 2);
+        break;
       case "wR":
-        wR = wR + stoll(bitBoard, nullptr, 2);
-      case ""
+        wR = wR + stoll(bitBoard,nullptr,2);
+        break;
+      case "wN":
+        wN = wN + stoll(bitBoard, nullptr, 2);
+        break;
+      case "wB":
+        wB = wB + stoll(bitBoard, nullptr, 2);
+        break;
+      case "wQ":
+        wQ = wQ + stoll(bitBoard, nullptr, 2);
+        break;
+      case "wK":
+        wK = wK + stoll(bitBoard, nullptr, 2);
+        break;
+      case "wP":
+        wP = wP + stoll(bitBoard, nullptr, 2);
+        break;
     }
   }
 }
