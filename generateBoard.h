@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <vector>
+#ifndef GENERATE_BOARD_H
+#define GENERATE_BOARD_H
 using namespace std;
 
 // wP=WhitePawn bP=BlackPawn wK=WhiteKind bK=BlackKing wQ=WhiteQueen bQ=BlackQueen
@@ -11,8 +13,10 @@ using namespace std;
 class generateBoard
 {
 public:
-  string board[][];
-  generateBoard(string board[][]);
+  string board[8][8];
+  generateBoard();
   void generateBitboard();
-  unsigned long long wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN;
+  unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN;
+
 };
+#endif
