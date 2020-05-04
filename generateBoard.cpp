@@ -38,6 +38,8 @@ Board::Board(){
 
   bN=0;
   pieces[11] = &bN;
+
+  generateBitboard();
 }
 
 void Board::generateBitboard(){
@@ -45,7 +47,6 @@ void Board::generateBitboard(){
     string bitBoard = "0000000000000000000000000000000000000000000000000000000000000000";
     bitBoard = bitBoard.substr(0, 63-i) + "1" + bitBoard.substr(0,i);
     string piece = board[i/8][i%8];
-    cout << i << " " << piece << " " << bitBoard << endl;
     if(piece == "wP"){
       wP += stoull(bitBoard, nullptr, 2);
       continue;
@@ -108,9 +109,17 @@ void Board::printBoard(){
 void Board::printBoardUsingBits() {
   for(int r = 0; r < 8; r++) {
     for(int c = 0; c < 8; c++) {
+      bool found = false;
       for(unsigned long long* piece : pieces) {
-        string binary = bitset<64>(piece).to_string();
-        cout << binary << endl;
+        string binary = bitset<64>(*piece).to_string();
+        if(binary.at(63 - (r * 8 + c)) == '1') {
+          cout << piece_to_string[piece] << " ";
+          found = true;
+          break;
+        }
+      }
+      if(!found) {
+        cout << " . ";
       }
     }
     cout << endl;
