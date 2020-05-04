@@ -13,10 +13,23 @@ using namespace std;
 class Board
 {
 public:
-  string board[8][8];
   Board();
+  
   void generateBitboard();
-  unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN;
+  void printBoard();
+  void printBoardUsingBits();
 
+  unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN;
+  unsigned long long int* pieces[12];
+  string board[8][8] =
+        {{"bR","bN","bB","bQ","bK","bB","bN","bR"},
+        {"bP","bP","bP","bP","bP","bP","bP","bP"},
+        {".",".",".",".",".",".",".","."},
+        {".",".",".",".",".",".",".","."},
+        {".",".",".",".",".",".",".","."},
+        {".",".",".",".",".",".",".","."},
+        {"wP","wP","wP","wP","wP","wP","wP","wP"},
+        {"wR","wN","wB","wQ","wK","wB","wN","wR"}};
 };
+
 #endif
