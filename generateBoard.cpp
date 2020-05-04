@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bitset>
 #include "generateBoard.h"
 using namespace std;
 
@@ -7,89 +7,91 @@ Board::Board(){
   pieces[0] = &wP;
 
   bP=0;
-  pieces[1] = &bP;
+  pieces[6] = &bP;
 
   wK=0;
-  pieces[2] = &wK;
+  pieces[1] = &wK;
 
   bK=0;
-  pieces[3] = &bK;
+  pieces[7] = &bK;
 
   wQ=0;
-  pieces[4] = &wQ;
+  pieces[2] = &wQ;
 
   bQ=0;
-  pieces[5] = &bQ;
+  pieces[8] = &bQ;
 
   wB=0;
-  pieces[6] = &wB;
+  pieces[3] = &wB;
 
   bB=0;
-  pieces[7] = &bB;
+  pieces[9] = &bB;
 
   wR=0;
-  pieces[8] = &wR;
+  pieces[4] = &wR;
 
   bR=0;
-  pieces[9] = &bR;
+  pieces[10] = &bR;
 
   wN=0;
-  pieces[10] = &wN;
+  pieces[5] = &wN;
 
   bN=0;
   pieces[11] = &bN;
 }
+
 void Board::generateBitboard(){
   for(int i = 0; i < 64; i++){
     string bitBoard = "0000000000000000000000000000000000000000000000000000000000000000";
-    bitBoard = bitBoard.substr(i+1) + "1" + bitBoard.substr(0,i);
+    bitBoard = bitBoard.substr(0, 63-i) + "1" + bitBoard.substr(0,i);
     string piece = board[i/8][i%8];
+    cout << i << " " << piece << " " << bitBoard << endl;
     if(piece == "wP"){
-      wP += stoll(bitBoard, nullptr, 2);
+      wP += stoull(bitBoard, nullptr, 2);
       continue;
     }
     if(piece == "bP"){
-      bP += stoll(bitBoard, nullptr, 2);
+      bP += stoull(bitBoard, nullptr, 2);
       continue;
     }
     if(piece == "wK"){
-      wK += stoll(bitBoard, nullptr, 2);
+      wK += stoull(bitBoard, nullptr, 2);
       continue;
     }
     if(piece == "bK"){
-      bK += stoll(bitBoard, nullptr, 2);
+      bK += stoull(bitBoard, nullptr, 2);
       continue;
     }
     if(piece == "wQ"){
-      wQ += stoll(bitBoard, nullptr, 2);
+      wQ += stoull(bitBoard, nullptr, 2);
       continue;
     }
     if(piece == "bQ"){
-      bQ += stoll(bitBoard, nullptr, 2);
+      bQ += stoull(bitBoard, nullptr, 2);
       continue;
     }
     if(piece == "wB"){
-      wB += stoll(bitBoard, nullptr, 2);
+      wB += stoull(bitBoard, nullptr, 2);
       continue;
     }
     if(piece == "bB"){
-      bB += stoll(bitBoard, nullptr, 2);
+      bB += stoull(bitBoard, nullptr, 2);
       continue;
     }
     if(piece == "wR"){
-      wR += stoll(bitBoard, nullptr, 2);
+      wR += stoull(bitBoard, nullptr, 2);
       continue;
     }
     if(piece == "bR"){
-      bR += stoll(bitBoard, nullptr, 2);
+      bR += stoull(bitBoard, nullptr, 2);
       continue;
     }
     if(piece == "wN"){
-      wN += stoll(bitBoard, nullptr, 2);
+      wN += stoull(bitBoard, nullptr, 2);
       continue;
     }
     if(piece == "bN"){
-      bN += stoll(bitBoard, nullptr, 2);
+      bN += stoull(bitBoard, nullptr, 2);
       continue;
     }
   }
@@ -104,10 +106,13 @@ void Board::printBoard(){
 }
 
 void Board::printBoardUsingBits() {
-  for(int i = 0; i < 64; i++) {
-    if(i % 8 == 0) {
-      cout << endl;
+  for(int r = 0; r < 8; r++) {
+    for(int c = 0; c < 8; c++) {
+      for(unsigned long long* piece : pieces) {
+        string binary = bitset<64>(piece).to_string();
+        cout << binary << endl;
+      }
     }
-    
+    cout << endl;
   }
 }
