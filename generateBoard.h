@@ -1,6 +1,7 @@
 
 
 #include <iostream>
+#include <map>
 #include <vector>
 #ifndef GENERATE_BOARD_H
 #define GENERATE_BOARD_H
@@ -14,13 +15,28 @@ class Board
 {
 public:
   Board();
-  
+
   void generateBitboard();
   void printBoard();
   void printBoardUsingBits();
 
   unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN;
   unsigned long long int* pieces[12];
+  map<unsigned long long int*, string> piece_to_string = {
+  	{&wP, "wP"},
+  	{&bP, "bP"},
+  	{&wK, "wK"},
+  	{&bK, "bK"},
+  	{&wQ, "wQ"},
+  	{&bQ, "bQ"},
+  	{&wB, "wB"},
+  	{&bB, "bB"},
+  	{&wR, "wR"},
+  	{&bR, "bR"},
+  	{&wN, "wN"},
+  	{&bN, "bN"}
+  };
+
   string board[8][8] =
         {{"bR","bN","bB","bQ","bK","bB","bN","bR"},
         {"bP","bP","bP","bP","bP","bP","bP","bP"},
