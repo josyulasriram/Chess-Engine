@@ -17,9 +17,22 @@ public:
   void generateBitboard();
   void printBoard();
   void printBoardUsingBits();
+  void getPawnMoves(string player);
 
   unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN;
   unsigned long long int* pieces[12];
+
+  unsigned long long int files[8] = {
+  	72340172838076673,
+  	144680345676153346,
+  	289360691352306692,
+  	578721382704613384,
+  	1157442765409226768,
+  	2314885530818453536,
+  	4629771061636907072,
+  	9259542123273814144
+  };
+
   map<unsigned long long int*, string> piece_to_string = {
   	{&wP, "wP"},
   	{&bP, "bP"},

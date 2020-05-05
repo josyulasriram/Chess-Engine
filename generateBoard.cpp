@@ -125,3 +125,7 @@ void Board::printBoardUsingBits() {
     cout << endl;
   }
 }
+
+void getPawnMoves(string player) {
+  
+}
