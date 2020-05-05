@@ -39,6 +39,8 @@ Board::Board(){
   bN=0;
   pieces[11] = &bN;
 
+  empty=0;
+
   generateBitboard();
 }
 
@@ -49,53 +51,43 @@ void Board::generateBitboard(){
     string piece = board[i/8][i%8];
     if(piece == "wP"){
       wP += stoull(bitBoard, nullptr, 2);
-      continue;
     }
     if(piece == "bP"){
       bP += stoull(bitBoard, nullptr, 2);
-      continue;
     }
     if(piece == "wK"){
       wK += stoull(bitBoard, nullptr, 2);
-      continue;
     }
     if(piece == "bK"){
       bK += stoull(bitBoard, nullptr, 2);
-      continue;
     }
     if(piece == "wQ"){
       wQ += stoull(bitBoard, nullptr, 2);
-      continue;
     }
     if(piece == "bQ"){
       bQ += stoull(bitBoard, nullptr, 2);
-      continue;
     }
     if(piece == "wB"){
       wB += stoull(bitBoard, nullptr, 2);
-      continue;
     }
     if(piece == "bB"){
       bB += stoull(bitBoard, nullptr, 2);
-      continue;
     }
     if(piece == "wR"){
       wR += stoull(bitBoard, nullptr, 2);
-      continue;
     }
     if(piece == "bR"){
       bR += stoull(bitBoard, nullptr, 2);
-      continue;
     }
     if(piece == "wN"){
       wN += stoull(bitBoard, nullptr, 2);
-      continue;
     }
     if(piece == "bN"){
       bN += stoull(bitBoard, nullptr, 2);
-      continue;
     }
+    empty = empty || stoull(bitBoard, nullptr, 2);
   }
+  empty = !empty;
 }
 void Board::printBoard(){
   for(int i = 0; i < 64; i++){
@@ -127,5 +119,5 @@ void Board::printBoardUsingBits() {
 }
 
 void getPawnMoves(string player) {
-  
+
 }

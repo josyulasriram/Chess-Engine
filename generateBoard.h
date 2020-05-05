@@ -19,10 +19,10 @@ public:
   void printBoardUsingBits();
   void getPawnMoves(string player);
 
-  unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN;
+  unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN, empty;
   unsigned long long int* pieces[12];
 
-  unsigned long long int files[8] = {
+  unsigned long long files[8] = {
   	72340172838076673,
   	144680345676153346,
   	289360691352306692,

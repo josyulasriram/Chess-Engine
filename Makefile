@@ -1,5 +1,5 @@
 CXX=clang++ $(CXXFLAGS)
-CXXFLAGS=-Wall -O2
+CXXFLAGS=-O2
 OBJECTS=generateBoard.o main.o
 
 make: $(OBJECTS)
