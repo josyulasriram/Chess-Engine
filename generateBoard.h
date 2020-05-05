@@ -33,6 +33,17 @@ public:
   	9259542123273814144
   };
 
+  unsigned long long ranks[8] = {
+  	255,
+  	65280,
+  	16711680,
+  	4278190080,
+  	1095216660480,
+  	280375465082880,
+  	71776119061217280,
+  	18374686479671623680
+  };
+
   map<unsigned long long int*, string> piece_to_string = {
   	{&wP, "wP"},
   	{&bP, "bP"},
