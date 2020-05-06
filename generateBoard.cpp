@@ -92,7 +92,7 @@ void Board::generateBitboard(){
 
   blackPieces = bP | bN | bB | bR | bQ;
   whitePieces = wP | wN | wB | wR | wQ;
-  empty = ~(blackPieces | whitePieces);
+  empty = ~(blackPieces | whitePieces | wK | bK);
 }
 void Board::printBoard(){
   for(int i = 0; i < 64; i++){
@@ -194,5 +194,125 @@ vector<int> Board::getBPMoves(){
     }
   }
 
+  return m;
+}
+
+vector<int> Board::getWNMoves() {
+  vector<int> m;
+  unsigned long long moves = (wN << 17) & (~files[0]) & (~(whitePieces | wK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (wN << 10) & (~files[0]) & (~files[1]) & (~(whitePieces | wK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (wN >> 6) & (~files[0]) & (~files[1]) & (~(whitePieces | wK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (wN >> 15) & (~files[0]) & (~(whitePieces | wK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (wN << 15) & (~files[7]) & (~(whitePieces | wK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (wN << 6) & (~files[7]) & (~files[6]) & (~(whitePieces | wK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (wN >> 10) & (~files[7]) & (~files[6]) & (~(whitePieces | wK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (wN >> 17) & (~files[7]) & (~(whitePieces | wK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+  return m;
+}
+
+vector<int> Board::getBNMoves() {
+  vector<int> m;
+  unsigned long long moves = (bN << 17) & (~files[0]) & (~(blackPieces | bK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (bN << 10) & (~files[0]) & (~files[1]) & (~(blackPieces | bK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (bN >> 6) & (~files[0]) & (~files[1]) & (~(blackPieces | bK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (bN >> 15) & (~files[0]) & (~(blackPieces | bK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (bN << 15) & (~files[7]) & (~(blackPieces | bK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (bN << 6) & (~files[7]) & (~files[6]) & (~(blackPieces | bK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (bN >> 10) & (~files[7]) & (~files[6]) & (~(blackPieces | bK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  moves = (bN >> 17) & (~files[7]) & (~(blackPieces | bK));
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
   return m;
 }
