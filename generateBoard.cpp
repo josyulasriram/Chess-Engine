@@ -126,7 +126,7 @@ void Board::printBoardUsingBits() {
 vector<int> Board::getWPMoves() {
   //Right capture
   vector<int> m;
-  long long moves = (wP >> 7) & (blackPieces) & (~files[7]);
+  unsigned long long moves = (wP >> 7) & (blackPieces) & (~files[7]);
   for(int i = 0; i < 64; i++){
     if((moves >> i) & 1){
       m.push_back(i);
@@ -163,7 +163,7 @@ return m;
 vector<int> Board::getBPMoves(){
   //Right capture
   vector<int> m;
-  long long moves = (wP << 9) & (whitePieces) & (~files[7]);
+  unsigned long long moves = (wP << 9) & (whitePieces) & (~files[7]);
   for(int i = 0; i < 64; i++){
     if((moves >> i) & 1){
       m.push_back(i);
