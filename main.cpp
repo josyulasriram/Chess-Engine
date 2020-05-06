@@ -13,9 +13,14 @@ int main(){
 // =======
 	Board b;
 	b.printBoardUsingBits();
-	vector<int> moves = b.getWPMoves();
-	for(int i = 0; i < moves.size(); i++){
-		cout << moves.at(i) << endl;
+	vector<int> Wmoves = b.getWPMoves();
+	for(int i = 0; i < Wmoves.size(); i++){
+		cout << Wmoves.at(i) << endl;
+	}
+	cout << endl;
+	vector<int> bMoves = b.getBPMoves();
+	for(int i = 0; i < bMoves.size(); i++){
+		cout << bMoves.at(i) << endl;
 	}
 // >>>>>>> ab1ef84faf87b753997c32750ee20e349ac9d9be
 

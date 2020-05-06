@@ -132,6 +132,7 @@ vector<int> Board::getWPMoves() {
       m.push_back(i);
     }
   }
+
   //Left capture
   moves = (wP >> 9) & (blackPieces) & (~files[0]);
   for(int i = 0; i < 64; i++){
@@ -139,6 +140,7 @@ vector<int> Board::getWPMoves() {
       m.push_back(i);
     }
   }
+
   //move one up
   moves = (wP >> 8) & (empty);
   for(int i = 0; i < 64; i++){
@@ -156,4 +158,41 @@ vector<int> Board::getWPMoves() {
   }
 
 return m;
+}
+
+vector<int> Board::getBPMoves(){
+  //Right capture
+  vector<int> m;
+  long long moves = (wP << 9) & (whitePieces) & (~files[7]);
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  //Left capture
+  moves = (wP << 7) & (whitePieces) & (~files[0]);
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  //move one up
+  moves = (wP << 8) & (empty);
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  //move two up
+  moves = (wP<<16) & (empty & ranks[3]);
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+  return m;
 }

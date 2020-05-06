@@ -18,6 +18,7 @@ public:
   void printBoard();
   void printBoardUsingBits();
   vector<int> getWPMoves();
+  vector<int> getBPMoves();
 
   unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN, empty, blackPieces, whitePieces;
   unsigned long long int* pieces[12];
