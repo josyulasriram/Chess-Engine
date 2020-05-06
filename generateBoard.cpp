@@ -40,6 +40,8 @@ Board::Board(){
   pieces[11] = &bN;
 
   empty=0;
+  blackPieces=0;
+  whitePieces = 0;
 
   generateBitboard();
 }
@@ -85,9 +87,12 @@ void Board::generateBitboard(){
     if(piece == "bN"){
       bN += stoull(bitBoard, nullptr, 2);
     }
-    empty = empty || stoull(bitBoard, nullptr, 2);
+
   }
-  empty = !empty;
+
+  blackPieces = bP | bN | bB | bR | bQ;
+  whitePieces = wP | wN | wB | wR | wQ;
+  empty = ~(blackPieces | whitePieces);
 }
 void Board::printBoard(){
   for(int i = 0; i < 64; i++){
@@ -118,6 +123,37 @@ void Board::printBoardUsingBits() {
   }
 }
 
-void getPawnMoves(string player) {
+vector<int> Board::getWPMoves() {
+  //Right capture
+  vector<int> m;
+  long long moves = (wP >> 7) & (blackPieces) & (~files[7]);
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+  //Left capture
+  moves = (wP >> 9) & (blackPieces) & (~files[0]);
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+  //move one up
+  moves = (wP >> 8) & (empty);
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
 
+  //move two up
+  moves = (wP>>16) & (empty & ranks[4]);
+  for(int i = 0; i < 64; i++){
+    if((moves >> i) & 1){
+      m.push_back(i);
+    }
+  }
+
+return m;
 }

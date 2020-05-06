@@ -17,9 +17,9 @@ public:
   void generateBitboard();
   void printBoard();
   void printBoardUsingBits();
-  void getPawnMoves(string player);
+  vector<int> getWPMoves();
 
-  unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN, empty;
+  unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN, empty, blackPieces, whitePieces;
   unsigned long long int* pieces[12];
 
   unsigned long long files[8] = {
