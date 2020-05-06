@@ -19,6 +19,8 @@ public:
   void printBoardUsingBits();
   vector<int> getWPMoves();
   vector<int> getBPMoves();
+  vector<int> getWNMoves();
+  vector<int> getBNMoves();
 
   unsigned long long int wP, bP, wK, bK, wQ, bQ, wB, bB, wR, bR, wN, bN, empty, blackPieces, whitePieces;
   unsigned long long int* pieces[12];
@@ -62,12 +64,12 @@ public:
 
   string board[8][8] =
 	{{"bR","bN","bB","bQ","bK","bB","bN","bR"},
-	{"bP","bP","bP","bP","bP","bP","bP","bP"},
+	{"bP","bP","bP",".",".","bP","bP","bP"},
+	{".",".",".","bP","bP",".",".","."},
 	{".",".",".",".",".",".",".","."},
 	{".",".",".",".",".",".",".","."},
-	{".",".",".",".",".",".",".","."},
-	{".",".",".",".",".",".",".","."},
-	{"wP","wP","wP","wP","wP","wP","wP","wP"},
+	{".",".",".","wP","wP",".",".","."},
+	{"wP","wP","wP",".",".","wP","wP","wP"},
 	{"wR","wN","wB","wQ","wK","wB","wN","wR"}};
   };
 
