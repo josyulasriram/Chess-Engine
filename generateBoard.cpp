@@ -126,7 +126,7 @@ void Board::printBoardUsingBits() {
 vector<int> Board::getWPMoves() {
   //Right capture
   vector<int> m;
-  unsigned long long moves = (wP >> 7) & (blackPieces) & (~files[7]);
+  unsigned long long moves = (wP >> 7) & (blackPieces) & (~files[0]);
   for(int i = 0; i < 64; i++){
     if((moves >> i) & 1){
       m.push_back(i);
@@ -134,7 +134,7 @@ vector<int> Board::getWPMoves() {
   }
 
   //Left capture
-  moves = (wP >> 9) & (blackPieces) & (~files[0]);
+  moves = (wP >> 9) & (blackPieces) & (~files[7]);
   for(int i = 0; i < 64; i++){
     if((moves >> i) & 1){
       m.push_back(i);
@@ -150,7 +150,7 @@ vector<int> Board::getWPMoves() {
   }
 
   //move two up
-  moves = (wP>>16) & (empty & ranks[4]);
+  moves = (((wP >> 8) & empty) >> 8) & empty & ranks[4];
   for(int i = 0; i < 64; i++){
     if((moves >> i) & 1){
       m.push_back(i);
@@ -163,7 +163,7 @@ return m;
 vector<int> Board::getBPMoves(){
   //Right capture
   vector<int> m;
-  unsigned long long moves = (bP << 9) & (whitePieces) & (~files[7]);
+  unsigned long long moves = (bP << 7) & (whitePieces) & (~files[7]);
   for(int i = 0; i < 64; i++){
     if((moves >> i) & 1){
       m.push_back(i);
@@ -171,7 +171,7 @@ vector<int> Board::getBPMoves(){
   }
 
   //Left capture
-  moves = (bP << 7) & (whitePieces) & (~files[0]);
+  moves = (bP << 9) & (whitePieces) & (~files[0]);
   for(int i = 0; i < 64; i++){
     if((moves >> i) & 1){
       m.push_back(i);
@@ -187,7 +187,7 @@ vector<int> Board::getBPMoves(){
   }
 
   //move two up
-  moves = (bP<<16) & (empty & ranks[3]);
+  moves = (((bP << 8) & empty) << 8) & empty & ranks[3];
   for(int i = 0; i < 64; i++){
     if((moves >> i) & 1){
       m.push_back(i);
